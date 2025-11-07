@@ -1,4 +1,3 @@
-const { Role } = require('./role')
 const { User } = require('./user')
 
-module.exports = { Role, User }
+module.exports = { User }

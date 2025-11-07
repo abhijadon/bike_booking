@@ -1,35 +1,59 @@
-// import package section
+// ----------------------------
+// Import required packages
+// ----------------------------
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
 const dotenv = require('dotenv');
-// import package section
+const cors = require('cors'); // for cross-origin requests
 
-// import connections files
-const { router } = require('./routes')
-// import connections files
+// ----------------------------
+// Initialize app
+// ----------------------------
+const app = express();
 
-
-// this global .env config
+// ----------------------------
+// Load environment variables
+// ----------------------------
 dotenv.config();
-// this global .env config
 
+// ----------------------------
+// Middleware setup
+// ----------------------------
 
-// this is port value
+// ✅ Parse JSON request bodies (important for Postman)
+app.use(express.json());
+
+// ✅ Enable CORS (allows requests from Postman / frontend)
+app.use(cors());
+
+// ✅ Optional: parse URL-encoded data if using forms
+app.use(express.urlencoded({ extended: true }));
+
+// ----------------------------
+// Import routes
+// ----------------------------
+const { router } = require('./routes'); // make sure you export "router" properly
+app.use('/api', router);
+
+// ----------------------------
+// Connect to MongoDB
+// ----------------------------
+mongoose
+    .connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => console.log('✅ MongoDB connected successfully'))
+    .catch((err) => console.error('❌ MongoDB connection error:', err.message));
+
+// ----------------------------
+// Define server port
+// ----------------------------
 const PORT = process.env.PORT || 3000;
-// this is port value
 
-
-// this is mongo database
-mongoose.connect(process.env.MONGO_URI)
-// this is mongo database
-
-// rest api
-app.use('/api', router)
-// rest api
-
-// run app
+// ----------------------------
+// Start the server
+// ----------------------------
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-})
-// run app
+    console.log(`🚀 Server is running at http://localhost:${PORT}`);
+});

@@ -1,11 +1,10 @@
 const express = require('express')
-const RolesController = require('../controllers/Role_Controller')
-
+const UserController = require('../controllers/User_Controller')
 const router = express.Router()
 
 
 //Roles routes api
-router.post('/roles/create', RolesController.create)
-
+router.post('/user/create', UserController.create)
+//Roles routes api
 
 module.exports = { router } 
