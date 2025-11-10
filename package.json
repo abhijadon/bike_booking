@@ -1,11 +1,11 @@
 {
   "name": "study",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "dev": "nodemon index.js"
+    "start": "nodemon src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +16,11 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "module-alias": "^2.2.3",
     "mongoose": "^8.19.3",
     "nodemon": "^3.1.10"
+  },
+  "_moduleAliases": {
+    "@": "./src"
   }
 }

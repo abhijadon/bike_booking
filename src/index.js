@@ -5,7 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors'); // for cross-origin requests
-
+require('module-alias/register');
 // ----------------------------
 // Initialize app
 // ----------------------------
@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 // ----------------------------
 // Import routes
 // ----------------------------
-const { router } = require('./routes'); // make sure you export "router" properly
+const { router } = require(''); // make sure you export "router" properly
 app.use('/api', router);
 
 // ----------------------------

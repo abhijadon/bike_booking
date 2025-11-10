@@ -1,4 +1,4 @@
-const Model = require('../../models');
+const Model = require('../../src/models');
 
 const update = async (req, res) => {
     try {
