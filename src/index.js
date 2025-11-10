@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 // ----------------------------
 // Import routes
 // ----------------------------
-const { router } = require(''); // make sure you export "router" properly
+const { router } = require('@/routes'); // make sure you export "router" properly
 app.use('/api', router);
 
 // ----------------------------

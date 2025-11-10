@@ -1,4 +1,4 @@
-const Model = require('../../src/models');
+const Model = require('@/models');
 const bcrypt = require('bcrypt');
 
 const create = async (req, res) => {
